@@ -1,0 +1,425 @@
+Colab notebook link :https://colab.research.google.com/drive/1dvvX7bNR8EtDBG4_8Y8Uri6HTDPS-sed?usp=sharing
+Personal Reading Journal and Quote Collector
+# Initialize an empty dictionary to store books
+books = {}
+
+#iInitialize an empty list to store Quotes
+Quotes = []
+
+Books name with author
+
+1.   
+Red, White & Royal Blue,Casey McQuiston, Rom com (genre) 2019
+- "History, huh? Bet we could make some."
+- "Sometimes you just jump and hope it's not a cliff."
+- "Straight people, he thinks, probably don't spend this much time convincing themselves that they're straight."
+
+
+
+2. A Game of Thrones
+Book One of A Song of Ice and Fire
+paperback edition (27)
+- A mind needs books as a sword needs a whetstone, if it is to keep its edge."
+- "Never forget what you are, for surely the world will not. Make it your strength. Then it can never be your weakness."
+- "Fear cuts deeper than swords."
+- "Winter is coming."
+- "When you play a game of thrones you win or you die."
+
+by George R. R. Martin, Fantacy(genre) .Published on August 1, 1996, 2012
+3. Study Guide
+the Stranger by Albert Camus
+by SuperSummary, fiction novel (genre). 2021
+- "I may not have been sure about what really did interest me, but I was absolutely sure about what didn't."
+- "I opened myself to the gentle indifference of the world."
+- "Since we're all going to die, it's obvious that when and how don't matter."
+
+4. Tik-Tok of Oz
+by L. Frank Baum, Children Novel (genre)
+- "One can be ugly in looks, but lovely in disposition."
+- "If we didn't want anything, we would never get anything, good or bad. I think our longings are natural, and if we act as nature prompts us we can't go far wrong."
+
+5. Pearl Buck's The good earth 1985, Historical fiction novel ,(genre)
+Here are some powerful quotes from The Good Earth by Pearl S. Buck:
+- "It is the end of a family—when they begin to sell their land."
+- "Hunger makes thief of any man."
+- "The rich are always afraid."
+- "And roots, if they are to bear fruits, must be kept well in the soil of the land."
+- "Out of the land we came and into we must go—and if you will hold your land you can live—no one can rob you of land.
+
+import random
+book_1 = {
+   "title" : "Red, White & Royal Blue",
+   "author" : "Casey McQuiston",
+   "year" : 2019,
+   "genre(s)" : "Rom_com",
+   "status"  :" reading",
+    "Quotes":{"text": ["History, huh? Bet we could make some." , "Sometimes you just jump and hope it's not a cliff." ] ,
+                "book_title": "Red, White & Royal Blue",
+                "page":random.randint(0 ,1001)
+ }}
+# Print each attribute on a separate line
+print(f"title: {book_1['title']}")
+print(f"author: {book_1['author']}")
+print(f"Year : {book_1['year']}")
+print(f"genre(s): {book_1['genre(s)']}")
+print(f"status: {book_1['status']}")
+print(f"Quotes: {book_1['Quotes']}")
+
+book_2 = {
+   "title" : "A Game of Thrones",
+   "author" : "George R. R. Martin",
+   "year" : 1996,
+   "genre(s)" : "Fantacy",
+   "status"  :" completed",
+    "Quote" : {"text": [ "A mind needs books as a sword needs a whetstone, if it is to keep its edge.",
+ "Never forget what you are, for surely the world will not. Make it your strength. Then it can never be your weakness.",
+"Fear cuts deeper than swords.","Winter is coming.", "When you play a game of thrones you win or you die."
+] ,"book_title": "A Game of Thrones",
+"page":( 0,2001)
+}}
+# Print each attribute on a separate line
+print(f"title: {book_2['title']}")
+print(f"author: {book_2['author']}")
+print(f"year : {book_2['year']}")
+print(f"genre(s): {book_2['genre(s)']}")
+print(f"status: {book_2['status']}")
+print(f"Quote: {book_2['Quote']}")
+
+book_3 = {
+   "title" : "Study Guide",
+   "author" : "Albert Camus",
+   "year" : 2021,
+   "genre(s)" : "fiction novel",
+   "status"  :" on hold",
+    "Quote(s)" :{"text": [
+                  "I may not have been sure about what really did interest me, but I was absolutely sure about what didn't.",
+                  "I opened myself to the gentle indifference of the world.",
+ "Since we're all going to die, it's obvious that when and how don't matter."
+] , "book_title": "Study Guide",
+"page":random.randint (0,2001)
+}
+}
+# Print each attribute on a separate line
+print(f"title: {book_3['title']}")
+print(f"author: {book_3['author']}")
+print(f"year : {book_3['year']}")
+print(f"genre(s): {book_3['genre(s)']}")
+print(f"status: {book_3['status']}")
+print(f"Quote(s): {book_3['Quote(s)']}")
+
+book_4 = {
+   "title" : "Tik-Tok of Oz",
+   "author" : "L. Frank Baum",
+   "year" : 1914,
+   "genre(s)" : "Children Novel",
+   "status"  :" reading",
+    "Quotes" : ["One can be ugly in looks, but lovely in disposition.",
+"If we didn't want anything, we would never get anything, good or bad. I think our longings are natural, and if we act as nature prompts us we can't go far wrong."]
+}
+# Print each attribute on a separate line
+print(f"title: {book_4['title']}")
+print(f"author: {book_4['author']}")
+print(f"year : {book_4['year']}")
+print(f"genre(s): {book_4['genre(s)']}")
+print(f"status: {book_4['status']}")
+print(f"Quotes: {book_4['Quotes']}")
+
+def add_book(books):
+    title = input("Enter book title: ")
+    author = input("Enter author: ")
+
+    # Check for uniqueness
+    if (title, author) in books:
+        print("Book with this title and author already exists.")
+        return
+
+    try:
+        year = int(input("Enter year published: "))
+    except ValueError:
+        print("Invalid year.")
+        return
+
+    genres_input = input("Enter genres (comma-separated): ")
+    genres = set([genre.strip().lower() for genre in genres_input.split(',') if genre.strip()])
+
+    status = input("Enter status (reading, completed, on hold): ").lower()
+    if status not in ['reading', 'completed', 'on hold']:
+        print("Invalid status.")
+        return
+
+    books[(title, author)] = {'year': year, 'genres': genres, 'status': status , "Quote(s)" : Quotes}
+    print("Book added successfully.")
+
+Pearl Buck's The good earth 1985, Historical fiction novel ,(genre)
+
+# Initialize an empty dictionary to store books
+books = {}
+
+# Call the add_book function and pass the books dictionary
+add_book(books)
+
+
+# After the function finishes, you can print the books dictionary
+# to see if the book was added
+print(books)
+
+class library:
+    def __init__(self, title, author, year, genres, status):
+        self.title = title
+        self.author = author
+        self.year = year
+        self.genres = genres
+        self.status = status
+
+    def introduction(self):
+        print(f"This book is titled '{self.title}' by {self.author}, published in {self.year}. It's in the genre(s): {', '.join(self.genres)} and is currently {self.status}.")
+# Create an instance of the library class
+# You need to provide values for book, author, year, genres, and status
+my_books = library("Red, White & Royal Blue", "Casey McQuiston ", 2019, {"rom_com"}, "reading")
+
+# Call the introduction method on the my_book object
+my_books.introduction()
+
+# You can also access the attributes of the object
+print(f"The year is: {my_books.year}")
+
+def search_books_by_genre(books, search_genre):
+    """
+    Searches for books in a dictionary by a specific genre.
+
+    Args:
+        books: A dictionary where keys are (title, author) tuples
+               and values are dictionaries with book details.
+        search_genre: The genre to search for (string).
+
+    Returns:
+        A list of (title, author) tuples for books that match the genre.
+    """
+    found_books = []
+    search_genre_lower = search_genre.lower() # Convert search genre to lowercase for case-insensitive search
+
+    for (title, author), book_details in books.items():
+        # Check if the search_genre is present in the book's genres set
+        if search_genre_lower in book_details.get('genres', set()):
+            found_books.append((title, author))
+
+    return found_books
+
+# Assuming you have added some books to the 'books' dictionary...
+
+def search_books_by_status(books, search_status):
+    """
+    Searches for books in a dictionary by a specific status.
+
+    Args:
+        books: A dictionary where keys are (title, author) tuples
+               and values are dictionaries with book details.
+        search_status: The status to search for (string).
+
+    Returns:
+        A list of (title, author) tuples for books that match the status.
+    """
+    found_books = []
+    search_status_lower = search_status.lower() # Convert search status to lowercase for case-insensitive search
+
+    for (title, author), book_details in books.items():
+        # Check if the book's status matches the search_status
+        if book_details.get('status', '').lower() == search_status_lower:
+            found_books.append((title, author))
+
+    return found_books
+
+# Search by Genre
+genre_to_find = "fiction"
+books_in_genre = search_books_by_genre(books, genre_to_find)
+
+if books_in_genre:
+    print(f"Books found in the '{genre_to_find}' genre:")
+    for title, author in books_in_genre:
+        print(f"- {title} by {author}")
+else:
+    print(f"No books found in the '{genre_to_find}' genre.")
+
+print("-" * 20) # Separator
+
+# Search by Status
+status_to_find = "reading"
+books_with_status = search_books_by_status(books, status_to_find)
+
+if books_with_status:
+    print(f"Books with status '{status_to_find}':")
+    for title, author in books_with_status:
+        print(f"- {title} by {author}")
+else:
+    print(f"No books found with status '{status_to_find}'.")
+
+
+# Assuming you have added some books to the 'books' dictionary...
+# For example, let's say you added a book titled "My Book" by "My Author"
+
+def update_book(books, title, author):
+    """
+    Updates the details of an existing book entry in the dictionary.
+
+    Args:
+        books: The dictionary where book information is stored.
+        title: The title of the book to update.
+        author: The author of the book to update.
+    """
+    book_key = (title, author)
+
+    if book_key in books:
+        print(f"Updating details for '{title}' by {author}:")
+        # Prompt user for new details and update if input is provided
+        year_input = input(f"Enter new year ({books[book_key]['year']}): ")
+        if year_input:
+            try:
+                books[book_key]['year'] = int(year_input)
+            except ValueError:
+                print("Invalid year format. Year not updated.")
+
+        genres_input = input(f"Enter new genres (comma-separated) ({', '.join(books[book_key]['genres'])}): ")
+        if genres_input:
+            books[book_key]['genres'] = set([genre.strip().lower() for genre in genres_input.split(',') if genre.strip()])
+
+        status_input = input(f"Enter new status (reading, completed, on hold) ({books[book_key]['status']}): ").lower()
+        if status_input in ['reading', 'completed', 'on hold']:
+            books[book_key]['status'] = status_input
+        elif status_input: # If input was provided but invalid
+             print("Invalid status. Status not updated.")
+
+        print("Book details updated successfully.")
+    else:
+        print(f"Book '{title}' by {author}' not found.")
+
+# Call the update_book function for a specific book
+# You will need to replace "Title of the book to update" and "Author of the book to update"
+# with the actual title and author of a book that exists in your 'books' dictionary.
+# The original call `update_book(books, "book_3")` seems incorrect as "book_3"
+# is a dictionary variable, not the title of a book in the format stored in the 'books' dictionary.
+# Assuming you have added "Study Guide" by "Albert Camus" using add_book,
+# you might call it like this:
+# update_book(books, "Study Guide", "Albert Camus")
+
+# For demonstration, let's first add a book so there's something to update
+print("Adding a book to demonstrate update...")
+# You will be prompted to enter details for this book
+add_book(books) # This function call relies on user input in the console
+
+# Now, let's try to update the book you just added.
+# You will need to enter the exact title and author you used when prompted by add_book.
+# For example, if you entered "My Test Book" and "Test Author", you would call:
+# update_book(books, "My Test Book", "Test Author")
+
+# As the example call in the original cell was `update_book(books, "book_3")`,
+# which was incorrect, let's provide a placeholder call that you should modify
+# with the actual title and author you want to update after adding a book.
+print("\nAttempting to update a book...")
+update_book(books, "Enter the exact title of the book you added", "Enter the exact author of the book you added")
+
+
+# You can then optionally print the books dictionary again to see the changes
+print("\nCurrent state of the books dictionary:")
+print(books)
+
+def delete_book(books, title, author):
+    """
+    Deletes a book entry from the dictionary.
+
+    Args:
+        books: The dictionary where book information is stored.
+        title: The title of the book to delete.
+        author: The author of the book to delete.
+    """
+    # Find the book in the dictionary
+    book_key = (title, author)
+
+    if book_key in books:
+        del books[book_key]
+        print(f"Book '{title}' by {author} deleted successfully.")
+    else:
+        print(f"Book '{title}' by {author} not found.")
+
+books = [book_1, book_2 , book_3, book_4]
+
+# Assuming you have added some books to the 'books' dictionary...
+# For example, let's say you added a book titled "My Book" by "My Author"
+
+# Call the delete_book function for a specific book
+delete_book(books, "Book", " Author")
+
+# You can then optionally print the books dictionary again to see if the book was removed
+print(books)
+
+#View Quotes
+Quotes =[]
+
+for quote in Quotes:
+    print(quote)
+
+#add new Quote(s)
+new_quote = input("Enter a new quote: ")
+Quotes.append(new_quote)
+print("Quote added successfully.")
+
+#Search Quotes by Keywords
+keyword = input("Enter a keyword to search for: ")
+matching_quotes = [quote for quote in Quotes if keyword.lower() in quote.lower()]
+print(matching_quotes)
+
+#Save Quotes in User given Year (2025)
+quotes_by_year = {}
+
+year = input("Enter the year to save quotes: ")  # User inputs the year
+quote = input("Enter a quote: ")  # User inputs the quote
+
+if year not in quotes_by_year:
+    quotes_by_year[year] = []
+
+quotes_by_year[year].append(quote)  # Save the quote under the given year
+
+print(f"Quote saved under {year}: {quotes_by_year[year]}")
+
+
+
+#delete a Quote
+index_to_delete = int(input("Enter the index of the quote to delete: "))
+if 0 <= index_to_delete < len(Quotes):
+    del Quotes[index_to_delete]
+    print("Quote deleted successfully.")
+else:
+        print("Invalid index.")
+        print(Quotes)
+
+
+#Show the book with most Quote(s)
+quotes_by_book = {
+    "Red, White & Royal Blue": 3,
+    "A Game of Thrones": 5,
+    "The Stranger": 3,
+    "Tik-Tok of Oz": 3,
+    "The Good Earth": 5
+}
+
+most_quotes_book = max(quotes_by_book, key=quotes_by_book.get)  # Finding the book with the highest number of quotes
+
+print(f"The book with the most quotes is: {most_quotes_book} ({quotes_by_book[most_quotes_book]} quotes)")
+
+# Find the Author with most Entries
+# Define the quotes_by_author dictionary. This is a placeholder based on the
+# authors from the previously defined book dictionaries and assumes the counts
+# from quotes_by_book correspond to these authors.
+quotes_by_author = {
+    "Casey McQuiston": quotes_by_book.get("Red, White & Royal Blue", 0),
+    "George R. R. Martin": quotes_by_book.get("A Game of Thrones", 0),
+    # Note: "The Stranger" is a study guide *by* SuperSummary *for* Albert Camus's book.
+    # We'll associate these quotes with Camus for simplicity based on the original markdown.
+    "Albert Camus": quotes_by_book.get("The Stranger", 0),
+    "L. Frank Baum": quotes_by_book.get("Tik-Tok of Oz", 0),
+    "Pearl S. Buck": quotes_by_book.get("The Good Earth", 0)
+}
+
+
+most_entries_author = max(quotes_by_author, key=quotes_by_author.get)  # Finding the author with the highest number of quotes
+
+print(f"The author with the most entries is: {most_entries_author} ({quotes_by_author[most_entries_author]} quotes)")
