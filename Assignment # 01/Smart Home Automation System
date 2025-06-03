@@ -1,0 +1,317 @@
+# Create a list of smart home devices
+smart_devices = ["Lights", "Fan", "AC", "Door Lock", "Thermostat"]
+
+# Display the initial list of devices
+print("Initial list of smart devices:", smart_devices)
+
+# Function to add a new device
+def add_device(device_list):
+  new_device = input("Enter the name of the new device to add: ")
+  device_list.append(new_device)
+  print(f"{new_device} added to the list.")
+  print("Updated device list:", device_list)
+
+# Function to remove a device
+def remove_device(device_list):
+  device_to_remove = input("Enter the name of the device to remove: ")
+  if device_to_remove in device_list:
+    device_list.remove(device_to_remove)
+    print(f"{device_to_remove} removed from the list.")
+    print("Updated device list:", device_list)
+  else:
+    print(f"{device_to_remove} not found in the list.")
+
+# Function to sort devices alphabetically
+def sort_devices(device_list):
+  device_list.sort()
+  print("Devices sorted alphabetically:", device_list)
+
+# Example usage (you can uncomment these lines to test)
+# add_device(smart_devices)
+# remove_device(smart_devices)
+# sort_devices(smart_devices)
+
+smart_devices = ["Lights", "Fan", "AC", "Door Lock", "Thermostat"]
+print("Initial list of smart devices:", smart_devices)
+
+# Task 1.2: Store Device Settings Using Tuples
+
+# Define a list to store device settings as tuples
+# Each tuple will be (device_name, status, power_consumption)
+device_settings = [
+    ("Lights", "ON", 60),
+    ("Fan", "OFF", 30),
+    ("AC", "ON", 1500),
+    ("Door Lock", "OFF", 5),
+    ("Thermostat", "ON", 10)
+]
+
+# Function to display all devices with their status and power consumption
+def view_device_settings(settings_list):
+  print("\n--- Device Settings ---")
+  for setting in settings_list:
+    # Unpack the tuple for easy access to elements
+    device_name, status, power_consumption = setting
+    print(f"Device: {device_name}, Status: {status}, Power Consumption: {power_consumption} Watts")
+  print("-----------------------")
+
+# Example usage:
+view_device_settings(device_settings)
+
+# Task 2.1: Store Device Energy Usage in a Dictionary
+
+# Create a dictionary to store device energy usage (device_name: energy_usage_in_kWh)
+energy_usage = {
+    "Lights": 0.5,
+    "Fan": 0.1,
+    "AC": 3.0,
+    "Thermostat": 0.2
+}
+
+print("Initial energy usage data:", energy_usage)
+
+# Function to add or update energy usage data
+def add_update_energy_usage(usage_dict):
+  device_name = input("Enter the device name: ")
+  try:
+    usage_kwh = float(input(f"Enter the energy usage for {device_name} in kWh: "))
+    usage_dict[device_name] = usage_kwh
+    print(f"Energy usage for {device_name} updated to {usage_kwh} kWh.")
+    print("Updated energy usage data:", usage_dict)
+  except ValueError:
+    print("Invalid input. Please enter a number for energy usage.")
+
+
+# Function to remove a device's energy usage data
+def remove_energy_usage(usage_dict):
+  device_name = input("Enter the name of the device to remove energy usage for: ")
+  if device_name in usage_dict:
+    del usage_dict[device_name]
+    print(f"Energy usage data for {device_name} removed.")
+    print("Updated energy usage data:", usage_dict)
+  else:
+    print(f"Device {device_name} not found in energy usage data.")
+
+# Function to display total energy consumption
+def display_total_energy_consumption(usage_dict):
+  total_consumption = sum(usage_dict.values())
+  print(f"\nTotal energy consumption across all devices: {total_consumption:.2f} kWh")
+
+# Example usage (uncomment to test):
+# add_update_energy_usage(energy_usage)
+# remove_energy_usage(energy_usage)
+# display_total_energy_consumption(energy_usage)
+
+# Function to add or update energy usage data
+def add_update_energy_usage(usage_dict):
+  device_name = input("Enter the device name: ")
+  try:
+    usage_kwh = float(input(f"Enter the energy usage for {device_name} in kWh: "))
+    usage_dict[device_name] = usage_kwh
+    print(f"Energy usage for {device_name} updated to {usage_kwh} kWh.")
+    print("Updated energy usage data:", usage_dict)
+  except ValueError:
+    print("Invalid input. Please enter a number for energy usage.")
+
+# Task 2.2: Identify Unique Power-Saving Modes Using Sets
+
+# Create a set to store unique power-saving modes
+power_saving_modes = {"Eco Mode", "Night Mode"}
+
+print("Initial Power-Saving Modes:", power_saving_modes)
+
+# Function to add a new power-saving mode
+def add_power_saving_mode(modes_set):
+  new_mode = input("Enter the new power-saving mode to add: ")
+  if new_mode in modes_set:
+    print(f"'{new_mode}' is already in the list of power-saving modes.")
+  else:
+    modes_set.add(new_mode)
+    print(f"'{new_mode}' added to the power-saving modes.")
+  print("Updated Power-Saving Modes:", modes_set)
+
+# Function to check if a power-saving mode is available
+def check_power_saving_mode(modes_set):
+  mode_to_check = input("Enter the power-saving mode to check: ")
+  if mode_to_check in modes_set:
+    print(f"'{mode_to_check}' is available.")
+  else:
+    print(f"'{mode_to_check}' is not available.")
+
+# Function to view all power-saving modes
+def view_power_saving_modes(modes_set):
+  print("\n--- Available Power-Saving Modes ---")
+  for mode in modes_set:
+    print(f"- {mode}")
+  print("------------------------------------")
+
+# Example usage (uncomment to test):
+# add_power_saving_mode(power_saving_modes)
+# check_power_saving_mode(power_saving_modes)
+# view_power_saving_modes(power_saving_modes)
+
+# Task 3.1: Create a Function to Calculate Monthly Energy Cost
+
+def calculate_energy_cost(total_energy_usage, rate_per_kwh):
+  """
+  Calculates the total monthly energy cost.
+
+  Args:
+    total_energy_usage: The total energy usage in kWh (float or int).
+    rate_per_kwh: The electricity rate per kWh (float).
+
+  Returns:
+    A formatted string representing the total monthly energy cost.
+  """
+  total_cost = total_energy_usage * rate_per_kwh
+  return f"Total Monthly Energy Cost: ${total_cost:.2f}"
+
+# Example usage based on your example output:
+total_usage_example = 165
+rate_example = 0.12
+cost_output = calculate_energy_cost(total_usage_example, rate_example)
+print(cost_output)
+
+# You could also use the total energy consumption calculated in Task 2.1
+# if you uncomment the example usage there and run it first.
+# For example:
+# display_total_energy_consumption(energy_usage) # Run this first to get total usage
+# total_current_usage = sum(energy_usage.values())
+# current_rate = 0.15 # Example rate
+# current_cost_output = calculate_energy_cost(total_current_usage, current_rate)
+# print(current_cost_output)
+
+# Task 3.2: Create a Function to Find Common Devices in Two Homes
+
+def find_common_devices(home1_devices, home2_devices):
+  """
+  Finds the common smart devices present in two lists of devices.
+
+  Args:
+    home1_devices: A list of smart devices in the first home.
+    home2_devices: A list of smart devices in the second home.
+
+  Returns:
+    A set containing the names of devices common to both lists.
+  """
+  # Convert the lists to sets to easily find the intersection
+  set1 = set(home1_devices)
+  set2 = set(home2_devices)
+
+  # Find the intersection of the two sets (common elements)
+  common_devices_set = set1.intersection(set2)
+
+  return common_devices_set
+
+# Example usage based on your example output:
+home1_devices = ['Lights', 'AC', 'Fan']
+home2_devices = ['Fan', 'Door Lock', 'Lights']
+
+common_devices = find_common_devices(home1_devices, home2_devices)
+print(common_devices)
+
+# Task 4.1: Create an Automation Rule Using Functions
+
+def set_automation_rule(device, time, action):
+  """
+  Creates a message describing an automation rule.
+
+  Args:
+    device: The name of the smart device (string).
+    time: The time the action should occur (string, e.g., "10:00 PM").
+    action: The action to perform (string, e.g., "ON" or "OFF").
+
+  Returns:
+    A formatted string representing the automation rule message.
+  """
+  # Ensure the action is in uppercase for consistency in the message
+  formatted_action = action.upper()
+
+  # Create the automation rule message
+  rule_message = f"Automation Rule: {device} will be turned {formatted_action} at {time}."
+
+  return rule_message
+
+# Example usage based on your example output:
+device_name_example = "Lights"
+time_example = "10:00 PM"
+action_example = "OFF"
+
+automation_message = set_automation_rule(device_name_example, time_example, action_example)
+print(automation_message)
+# Task 4.1: Create an Automation Rule Using Functions
+
+def set_automation_rule(device, time, action):
+  """
+  Creates a message describing an automation rule.
+
+  Args:
+    device: The name of the smart device (string).
+    time: The time the action should occur (string, e.g., "10:00 PM").
+    action: The action to perform (string, e.g., "ON" or "OFF").
+
+  Returns:
+    A formatted string representing the automation rule message.
+  """
+  # Ensure the action is in uppercase for consistency in the message
+  formatted_action = action.upper()
+
+  # Create the automation rule message
+  rule_message = f"Automation Rule: {device} will be turned {formatted_action} at {time}."
+
+  return rule_message
+
+# Example usage based on your example output:
+device_name_example = "Lights"
+time_example = "10:00 PM"
+action_example = "OFF"
+
+automation_message = set_automation_rule(device_name_example, time_example, action_example)
+print(automation_message)
+
+# Task 5.1: Smart Home AI Assistant (Using *args & **kwargs)
+
+def smart_home_assistant(name, *args, **kwargs):
+  """
+  Acts as a smart home assistant to check device statuses and execute commands.
+
+  Args:
+    name: The homeowner's name (string).
+    *args: Variable number of arguments representing devices for status updates.
+    **kwargs: Variable number of keyword arguments representing automation commands
+              (device_name=action, e.g., lights="ON").
+
+  Returns:
+    A dictionary containing the updated status for devices that received automation commands.
+  """
+  print(f"Hello, {name}!")
+
+  # Process devices for status updates (*args)
+  if args:
+    print("Checking status for:", ", ".join(args))
+    # In a real system, you would interact with devices here to get their status
+
+  # Process automation commands (**kwargs)
+  updated_status = {}
+  if kwargs:
+    print("\nExecuting automation commands:")
+    for device, action in kwargs.items():
+      # Simulate executing the command
+      print(f"{device.capitalize()} set to {action.upper()}")
+      # Store the updated status (simulated)
+      updated_status[device] = action.upper()
+      # In a real system, you would send commands to devices here
+
+  # Return updated status for executed commands
+  return updated_status
+
+# Example usage based on your example input:
+homeowner_name = "Alice"
+devices_to_check = ("Lights", "AC")
+automation_commands = {"lights": "OFF", "ac": "ON"}
+
+updated_status_result = smart_home_assistant(homeowner_name, *devices_to_check, **automation_commands)
+
+print("\nReturned updated status:", updated_status_result) # Print the returned dictionary
+
+
