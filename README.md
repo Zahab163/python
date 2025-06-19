@@ -7,7 +7,7 @@ Don't feel Shy to Connect!.
 
 ****What's in this Repository:****
 
-In This Repository I'm Adding My Assignments which are Assigned to me By My our **Lecturer**&**Professor**  ****"Miss.Aqsa Moiz"**** ...
+In This Repository I'm Adding My Assignments which are Assigned to me By My **Lecturer**&**Professor**  ****"Miss.Aqsa Moiz"**** ...
 
 
   **/Assignment1** 
