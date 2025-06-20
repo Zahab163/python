@@ -1,0 +1,505 @@
+Here's a simple implementation of a User Profile class in Python that includes a user's name, mood entries, and mood history:
+
+
+[1]
+0s
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = []  # Stores past mood entries
+
+    def add_mood_entry(self, mood):
+        """Adds a mood entry to the user's history."""
+        self.mood_history.append(mood)
+
+    def get_mood_history(self):
+        """Returns the user's mood history."""
+        return self.mood_history
+
+    def __str__(self):
+        return f"User: {self.name}, Mood History: {self.mood_history}"
+
+# Example Usage
+user = UserProfile("Zahabia")  # Creating a user profile
+user.add_mood_entry("Happy ")
+user.add_mood_entry("Motivated")
+user.add_mood_entry("Relaxed ")
+
+print(user)  # Displays user information and mood history
+User: Zahabia, Mood History: ['Happy ', 'Motivated', 'Relaxed ']
+This class allows a user to store mood entries, retrieve their mood history, and print an overview of their profile.
+
+
+[2]
+0s
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = []  # Stores past mood entries
+
+    def add_mood_entry(self, mood_text):
+        """Adds a mood entry and analyzes mood based on keywords."""
+        mood_category = self.analyze_mood(mood_text)
+        mood_entry = {"text": mood_text, "category": mood_category}
+        self.mood_history.append(mood_entry)
+
+    def analyze_mood(self, mood_text):
+        """Analyzes mood using keywords."""
+        positive_keywords = {"happy", "great", "excited", "joyful", "motivated"}
+        negative_keywords = {"sad", "tired", "stressed", "down", "frustrated"}
+
+        mood_words = set(mood_text.lower().split())  # Convert to lowercase and split into words
+
+        if mood_words & positive_keywords:
+            return "Positive "
+        elif mood_words & negative_keywords:
+            return "Negative "
+        else:
+            return "Neutral "
+
+    def get_mood_history(self):
+        """Returns user's mood history."""
+        return self.mood_history
+
+    def __str__(self):
+        return f"User: {self.name}, Mood History: {self.mood_history}"
+
+# Example Usage
+user = UserProfile("Zahabia")  # Creating a user profile
+user.add_mood_entry("I am feeling great and motivated today!")
+user.add_mood_entry("Feeling a bit tired and stressed.")
+
+print(user)  # Displays user information and analyzed mood history
+User: Zahabia, Mood History: [{'text': 'I am feeling great and motivated today!', 'category': 'Positive '}, {'text': 'Feeling a bit tired and stressed.', 'category': 'Negative '}]
+How It Works:
+
+Users input how they feel in their own words.
+The system analyzes mood based on keywords like "happy" or "sad."
+It categorizes the mood as Positive, Negative, or Neutral based on the words detected.
+Here's an updated UserProfile class that stores mood entries along with their date in a dictionary: from datetime import datetime
+
+
+[3]
+0s
+from datetime import datetime
+
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = {}  # Dictionary to store moods with dates
+
+    def add_mood_entry(self, mood_text):
+        """Adds a mood entry with the current date."""
+        mood_category = self.analyze_mood(mood_text)
+        date = datetime.now().strftime("%Y-%m-%d")  # Store date in YYYY-MM-DD format
+
+        self.mood_history[date] = {"text": mood_text, "category": mood_category}
+
+    def analyze_mood(self, mood_text):
+        """Analyzes mood using keywords."""
+        positive_keywords = {"happy", "great", "excited", "joyful", "motivated"}
+        negative_keywords = {"sad", "tired", "stressed", "down", "frustrated"}
+
+        mood_words = set(mood_text.lower().split())  # Convert to lowercase and split into words
+
+        if mood_words & positive_keywords:
+            return "Positive "
+        elif mood_words & negative_keywords:
+            return "Negative "
+        else:
+            return "Neutral "
+
+    def get_mood_history(self):
+        """Returns user's mood history."""
+        return self.mood_history
+
+    def __str__(self):
+        return f"User: {self.name}, Mood History: {self.mood_history}"
+
+# Example Usage
+user = UserProfile("Zahabia")  # Creating a user profile
+user.add_mood_entry("Feeling great and excited today!")
+user.add_mood_entry("Feeling a bit tired and stressed.")
+
+print(user)  # Displays user information and mood history with dates
+User: Zahabia, Mood History: {'2025-06-20': {'text': 'Feeling a bit tired and stressed.', 'category': 'Negative '}}
+Improvements:
+
+Stores moods with dates for better tracking.
+
+Uses a dictionary for easy access and organization.
+
+Automatically categorizes moods based on keywords.
+
+Here's an updated version of the UserProfile class that assigns a simple mood label (Happy, Neutral, or Sad) based on keywords: from datetime import datetime
+
+
+[4]
+0s
+from datetime import datetime
+
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = {}  # Dictionary to store moods with dates
+
+    def add_mood_entry(self, mood_text):
+        """Adds a mood entry with the current date and assigns a mood label."""
+        mood_label = self.analyze_mood(mood_text)
+        date = datetime.now().strftime("%Y-%m-%d")  # Store date in YYYY-MM-DD format
+
+        self.mood_history[date] = {"text": mood_text, "label": mood_label}
+
+    def analyze_mood(self, mood_text):
+        """Assigns a simple mood label based on keywords."""
+        happy_keywords = {"happy", "great", "excited", "joyful", "motivated"}
+        sad_keywords = {"sad", "tired", "stressed", "down", "frustrated"}
+
+        mood_words = set(mood_text.lower().split())  # Convert to lowercase and split into words
+
+        if mood_words & happy_keywords:
+            return "Happy "
+        elif mood_words & sad_keywords:
+            return "Sad "
+        else:
+            return "Neutral "
+
+    def get_mood_history(self):
+        """Returns user's mood history."""
+        return self.mood_history
+
+    def __str__(self):
+        return f"User: {self.name}, Mood History: {self.mood_history}"
+
+# Example Usage
+user = UserProfile("Zahabia")  # Creating a user profile
+user.add_mood_entry("Feeling great and excited today!")
+user.add_mood_entry("Feeling a bit tired and stressed.")
+
+print(user)  # Displays user information and mood history with labels
+
+User: Zahabia, Mood History: {'2025-06-20': {'text': 'Feeling a bit tired and stressed.', 'label': 'Sad '}}
+Features:
+
+Categorizes moods into Happy , Sad , or Neutral
+
+Stores mood entries with dates for tracking trends
+
+Simple keyword-based detection for easy analysis
+
+Here's how you can print your mood history day by day and optionally show the most common mood label:
+
+
+[20]
+0s
+from collections import Counter
+
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = {}  # Stores mood entries by date
+
+    def add_mood_entry(self, mood_text):
+        from datetime import datetime
+        mood_label = self.analyze_mood(mood_text)
+        date = datetime.now().strftime("%Y-%m-%d")
+        self.mood_history[date] = {"text": mood_text, "label": mood_label}
+
+    def analyze_mood(self, mood_text):
+        happy_keywords = {"happy", "great", "excited", "joyful", "motivated"}
+        sad_keywords = {"sad", "tired", "stressed", "down", "frustrated"}
+
+        mood_words = set(mood_text.lower().split())
+
+        if mood_words & happy_keywords:
+            return "Happy "
+        elif mood_words & sad_keywords:
+            return "Sad "
+        else:
+            return "Neutral "
+
+    def show_mood_history(self):
+        print(f"Mood History for {self.name}:")
+        for date, mood_data in sorted(self.mood_history.items()):
+            print(f"{date}: {mood_data['label']} — \"{mood_data['text']}\"")
+
+        # Optional: Show most common mood
+        mood_labels = [entry["label"] for entry in self.mood_history.values()]
+        if mood_labels:
+            most_common = Counter(mood_labels).most_common(1)[0]
+            print(f" Most Common Mood: {most_common[0]} ({most_common[1]} times)")
+
+# Example Usage
+user = UserProfile("Zahabia")
+user.add_mood_entry("Feeling happy and joyful")
+user.add_mood_entry("A bit tired today")
+user.add_mood_entry("I'm excited about my project")
+
+user.show_mood_history()
+Mood History for Zahabia:
+2025-06-20: Happy  — "I'm excited about my project"
+ Most Common Mood: Happy  (1 times)
+This enhancement will give you:
+
+A date-wise mood log
+The original user input
+An optional insight: the most common emotional tone Would you like to extend this into a simple terminal-based journal or visualize the moods with a bar chart? I’d love to help you plot the trend!
+Here’s how you can enhance your UserProfile class to save mood entries to a file and load them when needed, using json for simplicity and readability:
+
+
+[7]
+0s
+import json
+from datetime import datetime
+from collections import Counter
+
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = {}
+
+    def add_mood_entry(self, mood_text):
+        mood_label = self.analyze_mood(mood_text)
+        date = datetime.now().strftime("%Y-%m-%d")
+        self.mood_history[date] = {"text": mood_text, "label": mood_label}
+
+    def analyze_mood(self, mood_text):
+        happy = {"happy", "great", "excited", "joyful", "motivated"}
+        sad = {"sad", "tired", "stressed", "down", "frustrated"}
+        mood_words = set(mood_text.lower().split())
+
+        if mood_words & happy:
+            return "Happy "
+        elif mood_words & sad:
+            return "Sad "
+        else:
+            return "Neutral "
+
+    def save_to_file(self, filename):
+        data = {"name": self.name, "mood_history": self.mood_history}
+        with open(filename, "w") as file:
+            json.dump(data, file)
+        print(f" Mood journal saved to '{filename}'.")
+
+    def load_from_file(self, filename):
+        try:
+            with open(filename, "r") as file:
+                data = json.load(file)
+                self.name = data.get("name", self.name)
+                self.mood_history = data.get("mood_history", {})
+            print(f" Mood journal loaded from '{filename}'.")
+        except FileNotFoundError:
+            print(f" No journal file found at '{filename}'. Starting fresh.")
+
+    def show_mood_history(self):
+        print(f"\nMood History for {self.name}:")
+        for date, entry in sorted(self.mood_history.items()):
+            print(f"{date}: {entry['label']} — \"{entry['text']}\"")
+
+        # Optional summary
+        moods = [entry["label"] for entry in self.mood_history.values()]
+        if moods:
+            top = Counter(moods).most_common(1)[0]
+            print(f" Most Frequent Mood: {top[0]} ({top[1]} times)")
+
+# Example Usage
+user = UserProfile("Zahabia")
+user.load_from_file("mood_journal.json")
+user.add_mood_entry("Feeling motivated and happy")
+user.save_to_file("mood_journal.json")
+user.show_mood_history()
+ No journal file found at 'mood_journal.json'. Starting fresh.
+ Mood journal saved to 'mood_journal.json'.
+
+Mood History for Zahabia:
+2025-06-20: Happy  — "Feeling motivated and happy"
+ Most Frequent Mood: Happy  (1 times)
+What's new:
+
+save_to_file: Exports your journal as JSON for easy reusability
+load_from_file: Reloads entries next time you use your tracker
+Retains all mood-tracking functionality with analysis and summaries
+adding error handling makes your mood tracker more robust and user-friendly. Here's how you can gracefully handle empty inputs and invalid commands in the add_mood_entry and load_from_file methods:
+
+
+[9]
+0s
+import json
+from datetime import datetime
+from collections import Counter
+
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = {}
+
+    def add_mood_entry(self, mood_text):
+        """Adds a mood entry after validating input."""
+        if not mood_text.strip():
+            print(" Mood entry cannot be empty.")
+            return
+
+        mood_label = self.analyze_mood(mood_text)
+        date = datetime.now().strftime("%Y-%m-%d")
+        self.mood_history[date] = {"text": mood_text, "label": mood_label}
+
+    def analyze_mood(self, mood_text):
+        happy = {"happy", "great", "excited", "joyful", "motivated"}
+        sad = {"sad", "tired", "stressed", "down", "frustrated"}
+        mood_words = set(mood_text.lower().split())
+
+        if mood_words & happy:
+            return "Happy "
+        elif mood_words & sad:
+            return "Sad "
+        else:
+            return "Neutral "
+
+    def save_to_file(self, filename):
+        try:
+            with open(filename, "w") as file:
+                json.dump({"name": self.name, "mood_history": self.mood_history}, file)
+            print(f" Mood journal saved to '{filename}'.")
+        except Exception as e:
+            print(f" Error saving file: {e}")
+
+    def load_from_file(self, filename):
+        try:
+            with open(filename, "r") as file:
+                data = json.load(file)
+                self.name = data.get("name", self.name)
+                self.mood_history = data.get("mood_history", {})
+            print(f" Mood journal loaded from '{filename}'.")
+        except FileNotFoundError:
+            print(f" No journal found at '{filename}'. Starting fresh.")
+        except json.JSONDecodeError:
+            print(f" Unable to read journal file '{filename}'. It might be corrupted.")
+
+    def show_mood_history(self):
+        if not self.mood_history:
+            print(" No mood entries to display.")
+            return
+
+        print(f"\nMood History for {self.name}:")
+        for date, entry in sorted(self.mood_history.items()):
+            print(f"{date}: {entry['label']} — \"{entry['text']}\"")
+
+        mood_labels = [entry["label"] for entry in self.mood_history.values()]
+        most_common = Counter(mood_labels).most_common(1)
+        if most_common:
+            print(f" Most Frequent Mood: {most_common[0][0]} ({most_common[0][1]} times)")
+
+# Example usage
+user = UserProfile("Zahabia")
+user.load_from_file("mood_journal.json")
+user.add_mood_entry("   ")  # Will trigger empty input warning
+user.add_mood_entry("I'm so happy and joyful today!")
+user.save_to_file("mood_journal.json")
+user.show_mood_history()
+ Mood journal loaded from 'mood_journal.json'.
+ Mood entry cannot be empty.
+ Mood journal saved to 'mood_journal.json'.
+
+Mood History for Zahabia:
+2025-06-20: Happy  — "I'm so happy and joyful today!"
+ Most Frequent Mood: Happy  (1 times)
+What’s improved:
+
+Protects against empty entries
+Warns if journal file is missing or unreadable
+Catches unexpected save/load exceptions
+building a truly well-rounded mood tracker
+
+Activity suggestions based on mood
+
+A weekly mood summary
+Exporting the summary to a .txt file
+Updated Features in UserProfile
+
+
+[19]
+0s
+import json
+from datetime import datetime, timedelta
+from collections import Counter
+
+class UserProfile:
+    def __init__(self, name):
+        self.name = name
+        self.mood_history = {}
+
+    def add_mood_entry(self, mood_text):
+        if not mood_text.strip():
+            print(" Mood entry cannot be empty.")
+            return
+
+        mood_label = self.analyze_mood(mood_text)
+        date = datetime.now().strftime("%Y-%m-%d")
+        self.mood_history[date] = {"text": mood_text, "label": mood_label}
+        suggestion = self.suggest_activity(mood_label)
+        print(f" Suggested Activity for {mood_label}: {suggestion}")
+
+    def analyze_mood(self, mood_text):
+        happy = {"happy", "great", "excited", "joyful", "motivated"}
+        sad = {"sad", "tired", "stressed", "down", "frustrated"}
+        mood_words = set(mood_text.lower().split())
+
+        if mood_words & happy:
+            return "Happy "
+        elif mood_words & sad:
+            return "Sad "
+        else:
+            return "Neutral "
+
+    def suggest_activity(self, label):
+        activities = {
+            "Happy ": "Keep the energy flowing! Try a creative task or call a friend to share your joy.",
+            "Sad ": "Be kind to yourself—try journaling, sipping tea, or listen a Surah .",
+            "Neutral ": "How about a short walk, light reading, or exploring a new Activity?"
+        }
+        return activities.get(label, "Take a moment for yourself.")
+
+    def weekly_summary(self):
+        print(f" Weekly Mood Summary for {self.name}:")
+        today = datetime.now()
+        week_ago = today - timedelta(days=7)
+
+        summary = {label: 0 for label in ["Happy ", "Neutral ", "Sad "]}
+        for date_str, entry in self.mood_history.items():
+            try:
+                date = datetime.strptime(date_str, "%Y-%m-%d")
+                if week_ago <= date <= today:
+                    summary[entry["label"]] += 1
+            except ValueError:
+                continue  # skip invalid date formats
+
+        for mood, count in summary.items():
+            print(f"{mood}: {count} day(s)")
+        return summary
+
+    def export_summary(self, filename="weekly_mood_summary.txt"):
+        summary = self.weekly_summary()
+        try:
+            with open(filename, "w") as file:
+                file.write(f"Weekly Mood Summary for {self.name}:\n")
+                for mood, count in summary.items():
+                    file.write(f"{mood}: {count} day(s)\n")
+            print(f" Mood summary exported to '{filename}'")
+        except Exception as e:
+            print(f" Failed to export summary: {e}")
+
+# Example Usage
+user = UserProfile("Zahabia")
+user.add_mood_entry("Feeling joyful and motivated!")
+user.weekly_summary()
+user.export_summary()
+ Suggested Activity for Happy : Keep the energy flowing! Try a creative task or call a friend to share your joy.
+ Weekly Mood Summary for Zahabia:
+Happy : 1 day(s)
+Neutral : 0 day(s)
+Sad : 0 day(s)
+ Weekly Mood Summary for Zahabia:
+Happy : 1 day(s)
+Neutral : 0 day(s)
+Sad : 0 day(s)
+ Mood summary exported to 'weekly_mood_summary.txt'
