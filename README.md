@@ -17,16 +17,21 @@ In This Repository I'm Adding My Assignments which are Assigned to me By My **Le
     README.md  
     
   **/Assignment2**  
+  
   !000 Employees List using Faker ID.
   
     README.md  
     
-  **/Assignment3**  
+  **/Assignment3**
+
+  Personal Reading Journal and Quotes Collector.
   
     README.md  
 
-   **/Assignment04** 
+   **/Assignment04**
+   
    Mood Journal and Sentimental Tracker 
+   
    Readme.md
     
   README.md (Main overview of all assignments)
