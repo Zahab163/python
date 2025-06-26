@@ -1,0 +1,155 @@
+# Making a 3D Dimension Array :
+
+#Load Library
+import numpy as np
+
+A = np.arange(12).reshape(2,3,2)
+
+This will give you a 3-dimensional NumPy array with:
+- 2 blocks (or arrays),
+- each containing 3 rows,
+- and each row containing 2 columns.
+
+
+A 
+
+In NumPy, arrays are zero-indexed — meaning:
+- Block 1 → A[0]
+- Block 2 → A[1]
+- Row 1 → 0
+- Column 1 → 0
+
+## Selecting One or more Elements 
+
+#Select 1st Element
+A[0]
+
+
+#Select 2nd row and 2nd column
+A[1,1]
+
+## To Access and print the element in block : 2 , Row : 1,Column : 1
+
+A[0,1,1]
+
+Like Most of the things in Python NumPy arrays are Zero indexed .
+means the Index of first elementis 0 ,not 1. 
+NumPy's has a variety of Methods for selecting (indexing and slicing)
+
+array = np.arange(10)
+
+array
+
+#Select every thing upto 3
+array[:3]
+
+#Select everything after 3
+array[3:]
+
+#Select the Last Element
+array[-1] 
+
+#Reverse the Array
+array[::-1] 
+
+#Select the First 2 rows and all the Colomns
+A[:2,:]
+
+#Select all rows and 2nd Column
+A[:,1:2]
+
+##Print only the Last Row
+
+#Print only last row
+A[-1,-1]
+
+#Print Last Row of every block
+last_row = A[:,-1:]
+print("Last Row of Every Block: ")
+print(last_row) 
+
+## Reverse the order of the blocks in the array.
+
+A[::-1]
+
+## Describe a shape ,Size and Dimensions :
+
+#View no. of Row and Columns
+A.shape
+
+#View no. of elements (rows * Columns)
+A.size
+
+#view no.of Dimensions
+A.ndim
+
+# Find Minimum
+
+np.min(A)
+
+
+# Find Maximum
+
+np.max(A)
+
+
+#Print the Max Value in each 2D block
+for i in range(A.shape[0]):
+  block_max = np.max(A[i])
+  print(f" Max value in block {i + 1} : {block_max}")
+
+## Caculating  the Average, Variance ,and Standard Deviation.
+ Use NumPy's mean, var ,std
+
+#Return Mean
+np.mean(A)  
+
+#Return variance
+np.var(A) 
+
+
+#return standard deviation 
+np.std(A) 
+
+You could Apply Functions to an Array or Simply just add 100 . 
+
+# Add 100 to the Array
+
+#add 100 to all Element
+A + 100 
+
+
+# Loop through all blocks and print the sum of each block.
+
+
+#load Library
+import numpy as np
+ 
+
+#create Array
+Ar = np.arange(12).reshape(2,3,2) 
+
+for i in range(Ar.shape[0]):
+   block_sum = Ar[i].sum()
+   print(f"Sum of Block {i + 1}:{ block_sum }")
+
+##Convert the 3D array into a 1D array (flatten it).
+
+
+
+
+#Flatten an 3D
+Ar.flatten()
+
+## Replace all even numbers in the array with 0.
+
+
+A[A % 2 == 0] = 0
+
+print("Modified Array with even numbers replaced with 0:  ")
+print(A)
+
+## Count how many numbers in the array are greater than 10.
+
+count = np.sum(Ar > 10)
+print(f"Number of elements greater than 10: {count}") 
