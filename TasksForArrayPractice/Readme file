@@ -1,0 +1,46 @@
+#It'sZahabia Ahmed Here ! 
+I'm Currenty studying python for AI and Data Sciences....
+if you want to know more about me than visit my LinkedIn I.D: https://www.linkedin.com/in/zahabia-ahmed-entrepernuer-digitalmarketer
+
+# NumPy 3D Array Operations
+
+This project demonstrates basic operations using a 3D NumPy array. It showcases how to access, manipulate, and extract data from multi-dimensional arrays using Python's NumPy library.
+
+## 📦 Setup
+
+```bash
+pip install numpy
+ Array Structure
+We create a 3D NumPy array shaped (2, 3, 2) using np.arange() and reshape(). This gives:
+- 2 blocks (depth)
+- 3 rows per block
+- 2 columns per row
+ Core Operations
+ Accessing Elements
+- Access a specific element
+
+ Looping Through Blocks
+
+ Maximum Values
+- Maximum of each individual block
+
+Slicing Rows
+- Print last row of every block
+
+ Data Manipulation
+- Replace all even numbers with 0
+
+ Count values greater than 10
+
+ Outcome
+This exercise strengthens your understanding of:
+- 3D array indexing and slicing
+- Conditional replacement
+- Aggregation functions (sum, max, count)
+- Boolean masking
+
+Made with Love & HardWork by Zahabia
+
+
+
+
