@@ -18,7 +18,7 @@ In This Repository I'm Adding My Assignments which are Assigned to me By My **Le
     
   **/Assignment2**  
   
-  !000 Employees List using Faker ID.
+ 1000 Employees List using Faker ID.
   
     README.md  
     
